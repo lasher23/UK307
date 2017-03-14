@@ -5,14 +5,13 @@
  *
  * @return PDO
  */
-function connectToDatabase()
-{
-    try {
-        return new PDO('mysql:host=127.0.0.1;dbname=tasklist', 'root', '', [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-        ]);
-    } catch (PDOException $e) {
-        die('Keine Verbindung zur Datenbank mÃ¶glich: ' . $e->getMessage());
-    }
+function connectToDatabase() {
+	try {
+		return new PDO ( 'mysql:host=127.0.0.1;dbname=mortgageebank', 'root', '', [ 
+				PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+				PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8' 
+		] );
+	} catch ( PDOException $e ) {
+		die ( 'Keine Verbindung zur Datenbank möglich: ' . $e->getMessage () );
+	}
 }
