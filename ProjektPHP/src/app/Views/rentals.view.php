@@ -45,6 +45,8 @@
 				echo "hypoInRentalUnvalid.png";
 			}
 			?>" width="20" height="20"></td>
+			<td><a href="validateEdit<?php
+			echo '?id=' . $rentals ['rentalsID']?>">Change</a></td>
 		</tr>
 		<?php
 		endforeach

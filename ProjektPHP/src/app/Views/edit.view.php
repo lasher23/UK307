@@ -2,10 +2,12 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="public/js/validateNewForm.js"></script>
+<!--<script type="text/javascript" src="public/js/validateNewForm.js"></script>-->
 </head>
 <body>
-	<form action="validateNew" id="formular" method="post">
+	<form action="validateEditView?id=<?php
+	echo $id;
+	?>" id="formular" method="post">
 		<fieldset>
 			<legend>Person</legend>
 			<label for="name">Name</label><br> <input id="name" type="text"
@@ -50,8 +52,8 @@
 					<option value="<?php
 						echo $risk ['id']?>"
 					<?php
-						if (isset ( $riska )) {
-							if ($risk ['id'] == $riska) {
+						if (isset ( $values )) {
+							if ($risk ['id'] == $values ['riskID']) {
 								echo "selected";
 							}
 						}
@@ -80,8 +82,8 @@
 				<option value="<?php
 					echo $mortgage ['id']?>" 
 					<?php
-					if (isset ( $hypo )) {
-						if ($mortgage ['id'] == $hypo)
+					if (isset ( $values )) {
+						if ($mortgage ['id'] == $values ['mID'])
 							echo "selected";
 					}
 					?>
@@ -96,6 +98,11 @@
 				echo $errors ['hypo'];
 			}
 			?></label>
+		</fieldset>
+		<fieldset>
+			<legend>Status</legend>
+			<input type="radio" name="state" value="1">Bezahlt</input>
+			<input type="radio" name="state" value="0">Nicht Bezahlt</input>
 		</fieldset>
 		<input type="submit" value="Erstelle" />
 

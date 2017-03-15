@@ -20,17 +20,52 @@ class Rentals {
 		return $statement->fetchAll ();
 	}
 	function checkIfMortgageIDExist(int $id): bool {
-		$statement = $this->dbh->prepare ( 'select count(id) from mortgages where id=:id' );
+		$statement = $this->dbh->prepare ( 'select count(id) as c from mortgages where id=:id' );
 		$statement->bindParam ( ':id', $id );
 		$statement->execute ();
-		$count = $statement->fetchAll ();
-		return $count > 0;
+		$count = $statement->fetch ();
+		return $count ['c'] > 0;
 	}
 	function checkIfRiskIDExist(int $id): bool {
-		$statement = $this->dbh->prepare ( 'select count(id) from risk where id=:id' );
+		$statement = $this->dbh->prepare ( 'select count(id) as c from risk where id=:id' );
 		$statement->bindParam ( ':id', $id );
 		$statement->execute ();
-		$count = $statement->fetchAll ();
-		return $count > 0;
+		$count = $statement->fetch ();
+		return $count ['c'] > 0;
+	}
+	function checkIfRentalIDExist(int $id): bool {
+		$statement = $this->dbh->prepare ( 'select count(id) as c from rentals where id=:id' );
+		$statement->bindParam ( ':id', $id );
+		$statement->execute ();
+		$count = $statement->fetch ();
+		return $count ['c'] > 0;
+	}
+	function getAllFromID(int $id) {
+		$statement = $this->dbh->prepare ( 'select *, ri.id as riskID, m.id as mID from `rentals` as r, mortgages as m, person as p, risk as ri where r.fk_Mortgages = m.id and p.id = r.fk_person and r.fk_risk = ri.id and r.id = :id' );
+		$statement->bindParam ( ':id', $id );
+		$statement->execute ();
+		return $statement->fetch ();
+	}
+	function updateWhereID(int $id, $values) {
+		$risk = $values ['risk'];
+		var_dump ( $id );
+		$name = $values ['name'];
+		$email = $values ['email'];
+		$phone = $values ['phone'];
+		$mortgagesID = $values ['mortgages'];
+		$paidState = 0;
+		$statement = $this->dbh->prepare ( 'update rentals set paidState =  :paidState, fk_risk = :riskID, fk_Mortgages = :mortgagesID  where id = :id' );
+		$statement->bindParam ( ':paidState', $paidState );
+		$statement->bindParam ( ':riskID', $risk );
+		$statement->bindParam ( ':mortgagesID', $mortgagesID );
+		$statement->bindParam ( ':id', $id );
+		$statement->execute ();
+		
+		$statement = $this->dbh->prepare ( 'update person set name = :name, email = :email, phone = :phone where id = (select fk_person from rentals where id=:id LIMIT 1)' );
+		$statement->bindParam ( ':name', $name );
+		$statement->bindParam ( ':email', $email );
+		$statement->bindParam ( ':phone', $phone );
+		$statement->bindParam ( ':id', $id );
+		$statement->execute ();
 	}
 }
