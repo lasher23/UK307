@@ -52,6 +52,5 @@
 		endforeach
 		?>
 	</table>
-	<a href="new">Neuer Eintrag erstellen</a>
 </body>
 <html>

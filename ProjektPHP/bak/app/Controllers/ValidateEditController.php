@@ -15,4 +15,4 @@ $mortgages = $rentals->getAllMortgages ();
 $name = $values ['name'];
 $email = $values ['email'];
 $phone = $values ['phone'];
-require 'app/Views/edit.view.php';
+require 'app/views/edit.view.php';

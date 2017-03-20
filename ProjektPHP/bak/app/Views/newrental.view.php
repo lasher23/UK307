@@ -3,12 +3,9 @@
 <head>
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="public/js/validateNewForm.js"></script>
-<meta charset="utf-8">
 </head>
 <body>
-	<form action="validateEditView?id=<?php
-	echo $id;
-	?>" id="formular" method="post">
+	<form action="validateNew" id="formular" method="post">
 		<fieldset>
 			<legend>Person</legend>
 			<label for="name">Name</label><br> <input id="name" type="text"
@@ -53,8 +50,8 @@
 					<option value="<?php
 						echo $risk ['id']?>"
 					<?php
-						if (isset ( $values )) {
-							if ($risk ['id'] == $values ['riskID']) {
+						if (isset ( $riska )) {
+							if ($risk ['id'] == $riska) {
 								echo "selected";
 							}
 						}
@@ -83,8 +80,8 @@
 				<option value="<?php
 					echo $mortgage ['id']?>" 
 					<?php
-					if (isset ( $values )) {
-						if ($mortgage ['id'] == $values ['mID'])
+					if (isset ( $hypo )) {
+						if ($mortgage ['id'] == $hypo)
 							echo "selected";
 					}
 					?>
@@ -100,23 +97,8 @@
 			}
 			?></label>
 		</fieldset>
-		<fieldset>
-			<legend>Status</legend>
-			<input type="radio" name="state" value="1" <?php
-			if ($values ['paidState'] == 1) {
-				echo "checked";
-			}
-			?>>Bezahlt</input>
-
-			<input type="radio" name="state" value="0"<?php
-			if ($values ['paidState'] == 0) {
-				echo "checked";
-			}
-			?>>Nicht Bezahlt</input>
-		</fieldset>
-		<input type="submit" value="Aendern" />
+		<input type="submit" value="Erstelle" />
 
 	</form>
-	<a href="rentals">Abbrechen</a>
 </body>
 </html>

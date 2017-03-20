@@ -34,7 +34,7 @@ $(function() {
 							errors++;
 						}
 
-						if (!(new RegExp("^[0-9\\+\\-)/(\\s]*$")
+						if (!(new RegExp("^[0-9\\+\\-)(\\s]*$")
 								.test(($('#phone').val())))) {
 							addError($('#phone'));
 							$('#errorPhone')

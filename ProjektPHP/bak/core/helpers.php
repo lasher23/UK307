@@ -46,7 +46,7 @@ function validate($POST) {
 	} else if (preg_match ( "/.{0,}(@).{0,}/", $email ) === 0) {
 		$errors ['email'] = 'Das Feld E-Mail muss ein @ Zeichen enthalten!';
 	}
-	if (! preg_match ( "/^[0-9\+\-)\/(\s]*$/", $phone )) {
+	if (! preg_match ( "/^[0-9\+\-)(\s]*$/", $phone )) {
 		$errors ['phone'] = 'Das Feld Telefon darf nur folgende Zeichen enthalten: +-()1234567890 und leerzeichen!';
 	}
 	if (! $rentals->checkIfMortgageIDExist ( ( int ) $hypo )) {

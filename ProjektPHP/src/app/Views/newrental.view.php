@@ -100,5 +100,6 @@
 		<input type="submit" value="Erstelle" />
 
 	</form>
+	<a href="rentals">Abbrechen</a>
 </body>
 </html>

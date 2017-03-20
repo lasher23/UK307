@@ -2,7 +2,7 @@
 $router = new Router ();
 
 $router->define ( [ 
-		'' => 'app/Controllers/RentalsController.php',
+		'' => 'app/Controllers/WelcomeController.php',
 		'rentals' => 'app/Controllers/RentalsController.php',
 		'new' => 'app/Controllers/NewRentalController.php',
 		'validateNew' => 'app/Controllers/ValidateNewController.php',

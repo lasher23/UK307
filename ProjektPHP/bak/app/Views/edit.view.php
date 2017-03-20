@@ -3,7 +3,6 @@
 <head>
 <script src="https://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="public/js/validateNewForm.js"></script>
-<meta charset="utf-8">
 </head>
 <body>
 	<form action="validateEditView?id=<?php
@@ -114,9 +113,8 @@
 			}
 			?>>Nicht Bezahlt</input>
 		</fieldset>
-		<input type="submit" value="Aendern" />
+		<input type="submit" value="Erstelle" />
 
 	</form>
-	<a href="rentals">Abbrechen</a>
 </body>
 </html>
